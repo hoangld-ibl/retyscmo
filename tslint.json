@@ -21,6 +21,18 @@
         ],
         "object-literal-sort-keys": [
             false
-        ]
+        ],
+        "no-console": {
+            "severity": "warning",
+            "options": [
+                "log",
+                "error",
+                "debug",
+                "info",
+                "time",
+                "timeEnd",
+                "trace"
+            ]
+        }
     }
 }
