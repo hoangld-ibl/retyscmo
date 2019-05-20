@@ -12,6 +12,21 @@ interface State {
     count: number,
 }
 
+const CountCom = (props: any) => {
+    const { count } = props;
+    return (
+        <p>Count: {count}</p>
+    )
+}
+
+const CountDo = (props: any) => {
+    const { onCountDispath } = props;
+    return (
+        <button onClick={onCountDispath}>Props</button>
+    )
+}
+
+
 class App extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -38,6 +53,10 @@ class App extends React.Component<Props, State> {
                 <div>
                     <p>Props: {count.count}</p>
                     <button onClick={this.onCountDispath}>Props</button>
+                </div>
+                <div>
+                    <CountCom count={count.count} />
+                    <CountDo onCountDispath={this.onCountDispath} />
                 </div>
             </div>
         );
