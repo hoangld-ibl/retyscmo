@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 
 import { countActionDo } from './counts.action';
 import { CountMb } from './counts.mobx';
+import './counts.style.scss';
 
 interface Props {
     count: any,
@@ -47,16 +48,16 @@ const App = observer(
         public render() {
             const { count } = this.props;
             return (
-                <div>
-                    <div>
+                <div className='counts-component'>
+                    <div className='state'>
                         <p>State: {this.state.count}</p>
                         <button onClick={this.onCountState}>Count</button>
                     </div>
-                    <div>
+                    <div className='redux'>
                         <p>Redux: {count.count}</p>
                         <button onClick={this.onCountDispath}>Count</button>
                     </div>
-                    <div>
+                    <div className='mobx'>
                         <CountCom count={CountMb.count} />
                         <CountDo countDo={CountMb.countDo} />
                     </div>
