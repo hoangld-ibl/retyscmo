@@ -53,7 +53,7 @@ const App = observer(
                         <button onClick={this.onCountState}>Count</button>
                     </div>
                     <div>
-                        <p>Props: {count.count}</p>
+                        <p>Redux: {count.count}</p>
                         <button onClick={this.onCountDispath}>Count</button>
                     </div>
                     <div>

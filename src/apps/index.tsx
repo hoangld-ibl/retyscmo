@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { PersistGate } from 'redux-persist/integration/react';
 
+import configureStore from './store';
 import './index.css';
-import reducers from './reducers';
 import App from './modules/counts/counts.component';
-
-const store = createStore(reducers, applyMiddleware(thunk))
+const { persistor, store } = configureStore();
 
 class Apps extends React.Component {
     public render() {
         return (
             <Provider store={store}>
-                <App />
+                <PersistGate loading={null} persistor={persistor}>
+                    <App />
+                </PersistGate>
             </Provider>
         );
     }
