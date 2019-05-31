@@ -1,16 +1,20 @@
-import { observable, decorate } from "mobx";
+import { observable, decorate, action } from "mobx";
 
-
-export class CSInit {
+export class InitCs {
 
     public done: boolean = false;
 
-    constructor() {
+    // constructor() { }
+
+    public SyncApp() {
         const syn = this.sync(0);
         while (true) {
             const next = syn.next();
             if (next && next.done === true) {
-                this.done = true;
+                setTimeout(() => {
+                    this.done = true;
+                }, 5 * 1000);
+                break;
             }
         }
     }
@@ -21,13 +25,14 @@ export class CSInit {
         return 0;
     }
 
-    public autoRun = () => {
-        console.log('autoRun')
+    public autorun = () => {
+        this.done = true;
     }
 }
 
-decorate(CSInit, {
+decorate(InitCs, {
     done: observable,
+    autorun: action
 })
 
-export const InitMb = new CSInit();
+// export const InitMb = new InitCs();
